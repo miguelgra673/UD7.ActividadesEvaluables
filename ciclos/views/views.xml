@@ -1,0 +1,117 @@
+<odoo>
+    <data>
+        <menuitem name="Instituto Ciclos" id="ciclos.menu_root"/>
+
+        <!-- Vista de árbol-->
+        <record model="ir.ui.view" id="modulo_tree">
+            <field name="name">modulo.tree</field>
+            <field name="model">modulo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="ciclo_id"/>
+                    <field name="alumnos" widget="many2many_tags"/>
+                    <field name="profesor_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario -->
+        <record model="ir.ui.view" id="modulo_form">
+            <field name="name">modulo.form</field>
+            <field name="model">modulo</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="ciclo_id"/>
+                        <field name="alumnos"/>
+                        <field name="profesor_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción -->
+        <record model="ir.actions.act_window" id="action_modulo">
+            <field name="name">Módulos</field>
+            <field name="res_model">modulo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú -->
+        <menuitem name="Módulos" id="menu_modulo" parent="ciclos.menu_root" action="action_modulo"/>
+
+        <!-- Vista de árbol -->
+        <record model="ir.ui.view" id="alumno_tree">
+            <field name="name">alumno.tree</field>
+            <field name="model">alumno</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="modulos" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario -->
+        <record model="ir.ui.view" id="alumno_form">
+            <field name="name">alumno.form</field>
+            <field name="model">alumno</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="modulos"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción -->
+        <record model="ir.actions.act_window" id="action_alumno">
+            <field name="name">Alumnos</field>
+            <field name="res_model">alumno</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú -->
+        <menuitem name="Alumnos" id="menu_alumno" parent="ciclos.menu_root" action="action_alumno"/>
+
+        <!-- Vista de árbol -->
+        <record model="ir.ui.view" id="profesor_tree">
+            <field name="name">profesor.tree</field>
+            <field name="model">profesor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="modulos" widget="one2many_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario -->
+        <record model="ir.ui.view" id="profesor_form">
+            <field name="name">profesor.form</field>
+            <field name="model">profesor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="modulos"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción -->
+        <record model="ir.actions.act_window" id="action_profesor">
+            <field name="name">Profesores</field>
+            <field name="res_model">profesor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú -->
+        <menuitem name="Profesores" id="menu_profesor" parent="ciclos.menu_root" action="action_profesor"/>
+    </data>
+</odoo>
